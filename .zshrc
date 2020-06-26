@@ -9,7 +9,7 @@ export ZSH="/Users/billy/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME=powerlevel10k/powerlevel10k
-
+# ZSH_THEME="agnoster"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -31,6 +31,9 @@ ZSH_THEME=powerlevel10k/powerlevel10k
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -70,12 +73,28 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 PURE_POWER_MODE=fancy
-
 source ~/.purepower
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/billy/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/billy/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/billy/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/billy/google-cloud-sdk/completion.zsh.inc'; fi
+
+
+alias gb-clean="git branch | grep -v "master" | xargs git branch -D"
+
 export PATH=~/miniconda3/bin:$PATH
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export PATH=${HOME}/go/bin:${PATH}
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-source ~/.bash_profile
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
